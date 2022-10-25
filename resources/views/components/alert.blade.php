@@ -5,7 +5,7 @@
     'message' => null
 ])
 
-<div class="alert alert-{{ $type }} text-start" role="alert">
+<div class="alert alert-{{ $type }} alert-dismissible fade show text-start" role="alert">
     @if($header)
         <h4 class="alert-heading">{{ $header }}</h4>
     @endif
@@ -18,4 +18,5 @@
     @else
         {{ $message }}
     @endif
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
