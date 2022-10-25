@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\FriendController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,4 +26,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/', App\Http\Livewire\Todos\Index::class)->name('home');
     Route::get('create', App\Http\Livewire\Todos\Create::class)->name('create');
     Route::get('edit/{id}', App\Http\Livewire\Todos\Edit::class)->name('edit');
+
+    Route::get('friends', FriendController::class)->name('friends');
 });
