@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Todos;
 
 use Livewire\Component;
 
-class Todo extends Component
+class Create extends Component
 {
     public function render()
     {
         return <<<'blade'
             <div>
-                {{-- The best athlete wants his opponent at his best. --}}
+                {{-- Care about people's approval and you will be their prisoner. --}}
             </div>
         blade;
     }

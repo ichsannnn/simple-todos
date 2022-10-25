@@ -14,10 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->middleware('auth')->name('home');
-
 Route::get('login', [AuthController::class, 'login'])->name('login');
 Route::post('login', [AuthController::class, 'post_login'])->name('post_login')->middleware('throttle:login');
 Route::get('register', [AuthController::class, 'register'])->name('register');
@@ -25,4 +21,8 @@ Route::post('register', [AuthController::class, 'post_register'])->name('post_re
 
 Route::middleware('auth')->group(function () {
     Route::get('logout', [AuthController::class, 'logout'])->name('logout');
+
+    Route::get('/', App\Http\Livewire\Todos\Index::class)->name('home');
+    Route::get('create', App\Http\Livewire\Todos\Create::class)->name('create');
+    Route::get('edit/{id}', App\Http\Livewire\Todos\Edit::class)->name('edit');
 });
