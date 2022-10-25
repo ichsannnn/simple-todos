@@ -48,5 +48,17 @@ class RouteServiceProvider extends ServiceProvider
         RateLimiter::for('api', function (Request $request) {
             return Limit::perMinute(60)->by($request->user()?->id ?: $request->ip());
         });
+
+        RateLimiter::for('login', function (Request $request) {
+            $key = 'login.' . $request->input('username') . '.' . $request->ip();
+            $max = 3;
+            $decay = 30;
+
+            if (RateLimiter::tooManyAttempts($key, $max)) {
+                return to_route('login')->with('error', 'Too many attempts. Please wait for 30 seconds.')->withInput();
+            }
+
+            RateLimiter::hit($key, $decay);
+        });
     }
 }
