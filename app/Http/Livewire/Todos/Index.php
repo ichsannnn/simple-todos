@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Todos;
 
 use App\Models\Todo;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class Index extends Component
@@ -11,7 +12,10 @@ class Index extends Component
 
     public function render()
     {
-        $todos = Todo::orderBy('is_complete')->orderBy('updated_at', 'desc')->orderBy('created_at', 'desc')->get();
+        $todos = Todo::where('user_id', Auth::id())
+            ->orderBy('is_complete')
+            ->orderBy('updated_at', 'desc')
+            ->orderBy('created_at', 'desc')->get();
         return view('todos.index', compact('todos'))->extends('layouts.app');
     }
 
@@ -28,6 +32,10 @@ class Index extends Component
         $todo = Todo::find($id);
         $todo->is_complete = !$todo->is_complete;
         $todo->save();
+
+        if ($todo->is_complete) {
+            session()->flash('success', "Todo, {$todo->title}, marked as complete.");
+        }
     }
 
     public function showModal($id = null)
