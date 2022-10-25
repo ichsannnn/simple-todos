@@ -46,6 +46,7 @@ class AuthController extends Controller
         $user->name = $request->name;
         $user->username = $request->username;
         $user->password = bcrypt($request->password);
+        $user->face = rand(1, 8);
         $user->save();
 
         if (Auth::attempt(['username' => $request->username, 'password' => $request->password])) {
