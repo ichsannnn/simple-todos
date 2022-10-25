@@ -9,7 +9,7 @@ class FriendController extends Controller
 {
     public function __invoke()
     {
-        $users = User::get();
+        $users = User::orderBy('name')->get();
         return view('friends.index', compact('users'));
     }
 }
