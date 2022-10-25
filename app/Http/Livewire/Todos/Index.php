@@ -29,4 +29,10 @@ class Index extends Component
         $todo->is_complete = !$todo->is_complete;
         $todo->save();
     }
+
+    public function showModal($id = null)
+    {
+        $this->dispatchBrowserEvent('showModal');
+        $this->emitTo('todos.modal', 'showModal', ['id' => $id]);
+    }
 }

@@ -1,8 +1,19 @@
 <div>
     <div class="d-flex justify-content-between align-items-baseline mb-2">
         <h2>Todos</h2>
-        <a class="btn btn-primary" href="#">Create</a>
+        <button type="button" class="btn btn-primary" wire:click="showModal">Create</button>
     </div>
+
+    @section('scripts')
+        <script>
+            document.addEventListener('showModal', function () {
+                const myModal = new bootstrap.Modal(document.getElementById('inlineForm'));
+                myModal.show();
+            })
+        </script>
+    @endsection
+
+    @livewire('todos.modal')
 
     @if(session()->has('success'))
         <x-alert type="success" message="{{ session('success') }}"/>
@@ -29,8 +40,10 @@
                                     {{ $todo->description }}
                                 </div>
                                 <div @class(['card-footer', 'border-0', 'text-end', 'bg-secondary']) @if($loop->odd) style="--bs-bg-opacity: .0;" @else style="--bs-bg-opacity: .0;"  @endif>
-                                    <a class="btn btn-warning" href="#">Edit</a>
-                                    <button type="button" class="btn btn-danger" wire:click="delete({{ $todo->id }})">Delete</button>
+                                    @if(!$todo->is_complete)
+                                        <button type="button" class="btn btn-warning" wire:click="showModal({{ $todo->id }})">Edit</button>
+                                    @endif
+                                    <button type="button" class="ms-1 btn btn-danger" wire:click="delete({{ $todo->id }})">Delete</button>
                                 </div>
                             </div>
                         </div>
