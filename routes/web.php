@@ -24,8 +24,5 @@ Route::middleware('auth')->group(function () {
     Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 
     Route::get('/', App\Http\Livewire\Todos\Index::class)->name('home');
-    Route::get('create', App\Http\Livewire\Todos\Create::class)->name('create');
-    Route::get('edit/{id}', App\Http\Livewire\Todos\Edit::class)->name('edit');
-
     Route::get('friends', FriendController::class)->name('friends');
 });
