@@ -20,7 +20,7 @@
                                         @if($user->id == auth()->id())
                                             <h5 class="font-bold">{{ $user->name }} (Me)</h5>
                                         @else
-                                            <a href="#"><h5 class="font-bold">{{ $user->name }}</h5></a>
+                                            <a href="{{ route('home', $user->id) }}"><h5 class="font-bold">{{ $user->name }}</h5></a>
                                         @endif
                                         <h6 class="text-muted mb-0">&#64;{{ $user->username }}</h6>
                                     </div>

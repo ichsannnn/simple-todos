@@ -9,10 +9,18 @@ use Livewire\Component;
 class Index extends Component
 {
     public $check;
+    public $userId;
+
+    public function mount($id = null)
+    {
+        if (is_numeric($id)) {
+            $this->userId = $id;
+        }
+    }
 
     public function render()
     {
-        $todos = Todo::where('user_id', Auth::id())
+        $todos = Todo::where('user_id', $this->userId ?: Auth::id())
             ->orderBy('is_complete')
             ->orderBy('updated_at', 'desc')
             ->orderBy('created_at', 'desc')->get();

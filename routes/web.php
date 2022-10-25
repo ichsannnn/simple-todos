@@ -23,6 +23,6 @@ Route::post('register', [AuthController::class, 'post_register'])->name('post_re
 Route::middleware('auth')->group(function () {
     Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 
-    Route::get('/', App\Http\Livewire\Todos\Index::class)->name('home');
     Route::get('friends', FriendController::class)->name('friends');
+    Route::get('/{id?}', App\Http\Livewire\Todos\Index::class)->name('home');
 });
