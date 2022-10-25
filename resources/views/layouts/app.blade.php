@@ -9,6 +9,7 @@
     <link rel="shortcut icon" href="{{ asset('assets/images/logo/favicon.svg') }}" type="image/x-icon">
     <link rel="stylesheet" href="{{ asset('assets/css/shared/iconly.css') }}">
     @livewireStyles
+    <script src="{{ mix('js/app.js') }}" defer></script>
     @yield('styles')
 </head>
 
