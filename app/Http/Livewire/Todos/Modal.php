@@ -12,7 +12,12 @@ class Modal extends Component
     public $todoId;
     public $title;
     public $description;
+
     protected $listeners = ['showModal'];
+    protected $rules = [
+        'title' => 'required',
+        'description' => 'required'
+    ];
 
     public function render()
     {
@@ -21,6 +26,8 @@ class Modal extends Component
 
     public function save()
     {
+        $this->validate();
+
         $todo = new Todo();
         if ($this->state == 'edit') {
             $todo = Todo::find($this->todoId);

@@ -11,11 +11,17 @@
                 <div class="modal-body">
                     <label>Title</label>
                     <div class="form-group">
-                        <input type="text" wire:model="title" class="form-control">
+                        <input type="text" wire:model="title" @class(['form-control', 'is-invalid' => $errors->has('title')])>
+                        @error('title')
+                            <span class="invalid-feedback">{{ $message }}</span>
+                        @enderror
                     </div>
                     <label>Description</label>
                     <div class="form-group">
-                        <textarea wire:model="description" rows="3" class="form-control"></textarea>
+                        <textarea wire:model="description" rows="3" @class(['form-control', 'is-invalid' => $errors->has('description')])></textarea>
+                        @error('description')
+                            <span class="invalid-feedback">{{ $message }}</span>
+                        @enderror
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -23,7 +29,7 @@
                         <i class="bx bx-x d-block d-sm-none"></i>
                         <span class="d-none d-sm-block">Reset</span>
                     </button>
-                    <button type="button" class="btn btn-primary ml-1" wire:click="save" data-bs-dismiss="modal">
+                    <button type="button" class="btn btn-primary ml-1" wire:click="save">
                         <i class="bx bx-check d-block d-sm-none"></i>
                         <span class="d-none d-sm-block">{{ $state == 'edit' ? 'Save' : 'Add' }}</span>
                     </button>

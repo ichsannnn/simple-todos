@@ -22,7 +22,7 @@
                 <p class="auth-subtitle mb-5">Input your data to register to our website.</p>
 
                 @if($errors->any())
-                    <x-alert type="danger" header="Register failed!" :errors="$errors" />
+                    <x-alert type="danger" header="Sign up failed!" :errors="$errors" />
                 @endif
                 @if(session()->has('error'))
                     <x-alert type="danger" message="{{ session('error') }}" />
