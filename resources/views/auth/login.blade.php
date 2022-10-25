@@ -16,7 +16,7 @@
         <div class="col-lg-5 col-12">
             <div id="auth-left">
                 <div class="auth-logo">
-                    <h2>What To Do?</h2>
+                    <h2>{{ env('APP_NAME') }}</h2>
                 </div>
                 <h1 class="auth-title">Log in.</h1>
                 <p class="auth-subtitle mb-5">Log in with your data that you entered during registration.</p>

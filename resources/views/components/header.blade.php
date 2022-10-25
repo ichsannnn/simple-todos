@@ -2,7 +2,7 @@
     <div class="header-top" style="background-color: #435ebe;">
         <div class="container">
             <div class="logo">
-                <a href="{{ route('home') }}"><h2 class="text-white m-0">What To Do?</h2></a>
+                <a href="{{ route('home') }}"><h2 class="text-white m-0">{{ env('APP_NAME') }}</h2></a>
             </div>
             <div class="header-top-right">
 
